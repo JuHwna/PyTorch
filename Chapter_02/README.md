@@ -37,3 +37,24 @@ print(temp.view(-1,1)) # 2x2 행렬을 4x1로 변형
 - transpose : 행렬의 전치 외에도 차원의 순서를 변경할 때도 사용됨
 
 ### 데이터 준비
+
+```python
+# CSV 파일의 x 컬럼의 값을 넘파이 배열로 받아 Tensor(dtype)으로 바꿈
+torch.from_numpy(data['x'].values).unsqueeze(dim=1).float() 
+```
+
+### 커스텀 데이터셋을 만들어서 사용
+- 커스텀 데이터셋 : 데이터를 한 번에 다 부르지 않고 조금씩 나누어 불러서 사용하는 방식
+- CustomDataset 클래스를 구현하기 위해서 취해야 하는 형태
+
+```python
+class CustomDataset(torch.utils.data.Dataset):
+  def __init__(self): # 필요한 변수를 선언하고 데이터셋의 전처리를 해 주는 함수
+  def __len__(self): # 데이터셋의 길이. 즉, 총 샘플의 수를 가져오는 함수
+  def __getitem__(self,index): 
+  # 데이터셋에서 특정 데이터를 가져오는 함수(index번째 데이터를 반환하는 함수, 반환되는 값은 텐서 형태를 취해야 함
+```
+- 예제
+```
+
+```
